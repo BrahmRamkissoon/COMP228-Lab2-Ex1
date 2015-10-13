@@ -1,45 +1,62 @@
 package ramkissoon.brahm.com;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Test {
-
-		// simulate Questions
-	public void simulateQuestions(){
-		// questions 
-		String question1 = "In Java, the % refers to:" +
-				 			"/n a) percentages" +
-							"/n b) modulus operator" +
-							"/n c) division" +
-							"/n d) string format";
+	// Private instance variables
+	private ArrayList<Question> _questions;
+	private int _attempts;
 	
-		String question2 = "A variable is given a value through:" +
-							"/n a) import statement" +
-							"/n b) class declaration" +
-							"/n c) assignemnt statement" +
-							"/n d) equality operator";
+	// Constructor
+	public Test(ArrayList<Question> _questions, int _attempts) {
+		this._questions = _questions;
+		this._attempts = _attempts;
+		simulateQuestions();
+	}
+
+	// Simulate Questions
+	public void simulateQuestions(){
+		// Questions 
+		String question[] = {	"In Java, the % refers to:",														// Question 1
+								"A variable is given a value through:",												// Question 2
+								"Which of these is not true for the main() method:",								// Question 3
+								"Which action is not performed in this statement: Employee e = new Employee()",		// Question 4
+								"Overloaded methods cannot have the same:"};										// Question 5
+		// Choices
+		String choices[] = {	"\n 1. percentages" + 																// Choices for Question 1
+								"\n 2. modulus operator" + 															
+								"\n 3. division" + 																	
+								"\n 4. string format", 	
+								
+								"\n 1.import statement" +															// Choices for Question 2
+								"\n 2.class declaration" + 
+								"\n 3.assignment statement" + 
+								"\n 4.equality operator",
+								
+								"\n 1.it accepts an array of elements of type String" +								// Choices for Question 3
+								"\n 2.is the starting point of execution in java applications" + 
+								"\n 3.contains 4 modifiers in its method signature" + 
+								"\n 4.doesn't return a value",
+								
+								"\n 1.declaration" +																// Choices for Question 4
+								"\n 2.Instantiation" + 
+								"\n 3.Initialization" +
+								"\n 4.Execution",
+								
+								"\n 1.name" +																		// Choices for Question 5
+								"\n 2.implementation" + 
+								"\n 3.argument types" + 
+								"\n 4.signature with different return type"								
+							};
 		
-		String question3 = "Which of these is not true for the main() method:" +
-				 			"/n a) it accepts an array of elements of type String" +
-							"/n b) is the starting point of execution in java applications" +
-							"/n c) contains 4 modifiers in its method signature" +
-							"/n d) doesn't return a value";
+		// Answers
+		int answerList[] = {1, 2, 2, 4, 4};
 		
-		String question4 = "Which action is not performed by [ Employee e = new Employee() ]:" +
-				 			"/n a) declaration" +
-							"/n b) Instantiation" +
-							"/n c) Initialization" +
-							"/n d) Execution";
-		
-		String question5 = "Overloaded methods cannot have the same:" +
-				 			"/n a) name" +
-							"/n b) implementation" +
-							"/n c) argument types" +
-							"/n d) signature with different return type";
-		
-		String questionList[] ={question1, question2, question3, question4, question5};
-		String answerList[] = {"b", "c", "c", "d", "d"};	
-			
+		// Instantiate Questions
+		for (int i = 0; i < question.length; i++) {
+			this._questions.add(new Question(question[i], choices[i], answerList[i]));			
+		}
 	}
 
 	// simulate a random message to the user
