@@ -6,10 +6,10 @@ public class Question {
 	private int _answer;
 	
 	// Constructor
-	Question(String question, String answers, int correctAnswer){
+	Question(String question, String choices, int answer){
 		this._question = question;
-		this._choices = answers;
-		this._answer = correctAnswer;
+		this._choices = choices;
+		this._answer = answer;
 	}
 
 	// Getters
@@ -17,12 +17,19 @@ public class Question {
 		return this._question;
 	}
 	
-	public String getAnswers(){
+	public String getChoices(){
 		return this._choices;
 	}
 
-	public int getCorrectAnswer(){
+	public int getAnswer(){
 		return this._answer;
 	}
+
+	@Override
+	public String toString() {
+		return _question + _choices;
+	}
+	
+	
 
 }

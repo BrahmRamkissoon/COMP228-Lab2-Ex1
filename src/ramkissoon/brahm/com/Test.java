@@ -3,32 +3,32 @@ package ramkissoon.brahm.com;
 import java.util.ArrayList;
 import java.util.Random;
 
+import javax.swing.JOptionPane;
+
 public class Test {
 	// Private instance variables
 	private ArrayList<Question> _questions;
-	private int _attempts;
+	private int _score;
+	
+	
 	
 	// Constructor
-	public Test(ArrayList<Question> _questions, int _attempts) {
-		this._questions = _questions;
-		this._attempts = _attempts;
-		simulateQuestions();
-	}
-
-	// Simulate Questions
-	public void simulateQuestions(){
-		// Questions 
-		String question[] = {	"In Java, the % refers to:",														// Question 1
+	public Test() {
+		this._questions = new ArrayList<Question>();
+		this._score = 0;
+				
+		String[] question = {	"In Java, the % refers to:",														// Question 1
 								"A variable is given a value through:",												// Question 2
 								"Which of these is not true for the main() method:",								// Question 3
 								"Which action is not performed in this statement: Employee e = new Employee()",		// Question 4
 								"Overloaded methods cannot have the same:"};										// Question 5
+		
 		// Choices
-		String choices[] = {	"\n 1. percentages" + 																// Choices for Question 1
+		String[] choices = {	"\n 1. percentages" + 																// Choices for Question 1
 								"\n 2. modulus operator" + 															
 								"\n 3. division" + 																	
 								"\n 4. string format", 	
-								
+						
 								"\n 1.import statement" +															// Choices for Question 2
 								"\n 2.class declaration" + 
 								"\n 3.assignment statement" + 
@@ -51,12 +51,25 @@ public class Test {
 							};
 		
 		// Answers
-		int answerList[] = {1, 2, 2, 4, 4};
+		int[] answerList = {2, 3, 3, 4, 4};
 		
-		// Instantiate Questions
+		// Setup Questions
 		for (int i = 0; i < question.length; i++) {
-			this._questions.add(new Question(question[i], choices[i], answerList[i]));			
+			this._questions.add(new Question(question[i], choices[i], answerList[i]));		
+					
+		}		
+	}
+	
+	// Getter for score
+		public int getScore() {
+			return this._score;
 		}
+	
+
+	
+	// Simulate Questions
+	public Question simulateQuestion(int printOut){
+		return this._questions.remove(0);
 	}
 
 	// simulate a random message to the user
@@ -93,10 +106,34 @@ public class Test {
 			}		
 		}
 	}
+	
+	public boolean checkAnswer(Question q, int ans) {
+		Question question = q;
+		int input = ans;
+		boolean isCorrect;
+
+	 if (input == (q.getAnswer())) {
+		 return isCorrect = true;
+	 } else {
+		 return isCorrect = false;
+	 }
+}
 
 
 	// method to interact with the user
 	public void inputAnswer(){
+		Question q;
+		int userAnswer;
+		String input;
+		boolean isCorrect;
+		
+		
+		for (int i = 0; i < 5; i++) {
+			q=simulateQuestion(i);	
+			input = JOptionPane.showInputDialog(q.toString());
+			userAnswer = Integer.parseInt(input);
+			JOptionPane.showMessageDialog(null, simulateMessage(checkAnswer(q, userAnswer)));			
+		}
 			
 	}
 }
