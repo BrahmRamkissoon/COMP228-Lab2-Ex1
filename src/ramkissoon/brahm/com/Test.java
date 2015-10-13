@@ -24,30 +24,30 @@ public class Test {
 								"Overloaded methods cannot have the same:"};										// Question 5
 		
 		// Choices
-		String[] choices = {	"\n 1. percentages" + 																// Choices for Question 1
-								"\n 2. modulus operator" + 															
-								"\n 3. division" + 																	
-								"\n 4. string format", 	
+		String[] choices = {	"\n 1. Percentages" + 																// Choices for Question 1
+								"\n 2. Modulus operator" + 															
+								"\n 3. Division" + 																	
+								"\n 4. String format", 	
 						
-								"\n 1.import statement" +															// Choices for Question 2
-								"\n 2.class declaration" + 
-								"\n 3.assignment statement" + 
-								"\n 4.equality operator",
+								"\n 1. Import statement" +															// Choices for Question 2
+								"\n 2. Class declaration" + 
+								"\n 3. Assignment statement" + 
+								"\n 4. Equality operator",
 								
-								"\n 1.it accepts an array of elements of type String" +								// Choices for Question 3
-								"\n 2.is the starting point of execution in java applications" + 
-								"\n 3.contains 4 modifiers in its method signature" + 
-								"\n 4.doesn't return a value",
+								"\n 1. It accepts an array of elements of type String" +								// Choices for Question 3
+								"\n 2. Is the starting point of execution in java applications" + 
+								"\n 3. Contains 4 modifiers in its method signature" + 
+								"\n 4. Doesn't return a value",
 								
-								"\n 1.declaration" +																// Choices for Question 4
-								"\n 2.Instantiation" + 
-								"\n 3.Initialization" +
-								"\n 4.Execution",
+								"\n 1. Declaration" +																// Choices for Question 4
+								"\n 2. Instantiation" + 
+								"\n 3. Initialization" +
+								"\n 4. Execution",
 								
-								"\n 1.name" +																		// Choices for Question 5
-								"\n 2.implementation" + 
-								"\n 3.argument types" + 
-								"\n 4.signature with different return type"								
+								"\n 1. Name" +																		// Choices for Question 5
+								"\n 2. Implementation" + 
+								"\n 3. Argument types" + 
+								"\n 4. Signature with different return type"								
 							};
 		
 		// Answers
@@ -113,8 +113,11 @@ public class Test {
 		boolean isCorrect;
 
 	 if (input == (q.getAnswer())) {
+		 this._score++;
+		 
 		 return isCorrect = true;
 	 } else {
+		 
 		 return isCorrect = false;
 	 }
 }
@@ -125,15 +128,18 @@ public class Test {
 		Question q;
 		int userAnswer;
 		String input;
-		boolean isCorrect;
-		
+				
 		
 		for (int i = 0; i < 5; i++) {
 			q=simulateQuestion(i);	
 			input = JOptionPane.showInputDialog(q.toString());
 			userAnswer = Integer.parseInt(input);
+			
+			// Check answer and respond with appropriate message
 			JOptionPane.showMessageDialog(null, simulateMessage(checkAnswer(q, userAnswer)));			
 		}
+		
+		JOptionPane.showMessageDialog(null, "You scored " +  getScore() + "/5, " + getScore()*100/5);
 			
 	}
 }
