@@ -1,5 +1,6 @@
 package ramkissoon.brahm.com;
 
+// Question class is defined by question, choices and answer
 public class Question {
 	private String _question;
 	private String _choices;
